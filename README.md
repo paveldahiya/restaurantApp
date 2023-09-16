@@ -2,7 +2,11 @@
 Restaurant management app
 
 1. Top Level Modules
-2. 
+2. Customer module
+3. Orders module
+4. Inventory module
+
+
 ```mermaid
 graph TD
     subgraph CustomerManagement
