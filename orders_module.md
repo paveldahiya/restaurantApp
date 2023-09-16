@@ -27,7 +27,6 @@ subgraph Order
     end
     
 ```
-
 1. **Menu Display:**
    - **Explanation:** Present the restaurant's menu in a user-friendly format, including item descriptions, prices, and images. Categorize menu items for easy navigation.
 
