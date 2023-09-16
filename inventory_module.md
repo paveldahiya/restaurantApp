@@ -1,6 +1,5 @@
 # Restaurant inventory module high level requirements
 Inventory module requirements
-
 ```mermaid
 graph LR
 subgraph Inventory_Management
