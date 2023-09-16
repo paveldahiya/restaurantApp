@@ -16,6 +16,73 @@ graph LR
         Data_Analytics[Data Analytics]
     end
 ```
+DB Schema
+
+**Customers Table:**
+
+| Field             | Type         | Description                      |
+|-------------------|--------------|----------------------------------|
+| customer_id       | Primary Key  | Unique customer identifier       |
+| first_name        | VARCHAR(50)  | First name of the customer       |
+| last_name         | VARCHAR(50)  | Last name of the customer        |
+| email             | VARCHAR(100) | Customer's email address         |
+| phone_number      | VARCHAR(20)  | Customer's phone number          |
+| date_of_birth     | DATE         | Customer's date of birth         |
+| registration_date | DATE         | Date when the customer registered |
+| last_login_date   | DATE         | Date of the customer's last login|
+
+**Addresses Table:**
+
+| Field           | Type         | Description                               |
+|-----------------|--------------|-------------------------------------------|
+| address_id     | Primary Key  | Unique address identifier                  |
+| customer_id    | Foreign Key  | Reference to the customer who owns this address |
+| street_address | VARCHAR(100) | Street address                            |
+| city           | VARCHAR(50)  | City                                      |
+| state          | VARCHAR(50)  | State or province                         |
+| postal_code    | VARCHAR(20)  | Postal code or ZIP code                   |
+| country        | VARCHAR(50)  | Country                                   |
+
+**Preferences Table:**
+
+| Field              | Type         | Description                    |
+|--------------------|--------------|--------------------------------|
+| preference_id     | Primary Key  | Unique preference identifier   |
+| customer_id      | Foreign Key  | Reference to the customer      |
+| dietary_preferences | VARCHAR(255) | Customer's dietary preferences |
+| allergies          | VARCHAR(255) | Customer's allergies          |
+| favorite_cuisine   | VARCHAR(50)  | Customer's favorite cuisine   |
+
+**Orders Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| order_id     | Primary Key  | Unique order identifier                       |
+| customer_id  | Foreign Key  | Reference to the customer who placed the order |
+| order_date   | DATE         | Date when the order was placed                |
+| total_amount | DECIMAL(10, 2) | Total amount of the order                     |
+| status       | VARCHAR(20)  | Order status (e.g., pending, delivered)       |
+
+**Reviews Table:**
+
+| Field      | Type         | Description                                 |
+|------------|--------------|---------------------------------------------|
+| review_id | Primary Key  | Unique review identifier                    |
+| customer_id | Foreign Key  | Reference to the customer who left the review |
+| order_id   | Foreign Key  | Reference to the order being reviewed       |
+| rating     | INT          | Rating given by the customer (e.g., 1 to 5) |
+| comment    | TEXT         | Customer's comments or review text          |
+| review_date | DATE        | Date when the review was posted              |
+
+**Loyalty Points Table:**
+
+| Field           | Type         | Description                            |
+|-----------------|--------------|----------------------------------------|
+| loyalty_id     | Primary Key  | Unique loyalty points identifier       |
+| customer_id    | Foreign Key  | Reference to the customer              |
+| points_earned  | INT          | Points earned by the customer         |
+| points_used    | INT          | Points used by the customer           |
+| points_balance | INT          | Current points balance for the customer|
 
 1. **Customer Registration:**
    - **Explanation:** Provide a user-friendly registration process for customers to create accounts within the app. Collect essential information, such as name, email, phone number, and allow optional social media login for convenience.
