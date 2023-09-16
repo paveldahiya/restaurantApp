@@ -27,6 +27,60 @@ subgraph Order
     end
     
 ```
+DB Schema
+
+**Orders Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| order_id       | Primary Key  | Unique order identifier                       |
+| customer_id    | Foreign Key  | Reference to the customer who placed the order |
+| order_date     | DATE         | Date when the order was placed                |
+| total_amount   | DECIMAL(10, 2) | Total amount of the order                   |
+| status         | VARCHAR(20)  | Order status (e.g., pending, delivered)       |
+
+**Order_Items Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| item_id        | Primary Key  | Unique item identifier                        |
+| order_id       | Foreign Key  | Reference to the order to which the item belongs |
+| menu_item_id   | Foreign Key  | Reference to the menu item being ordered     |
+| quantity       | INT          | Quantity of the menu item in the order        |
+| unit_price     | DECIMAL(10, 2) | Price per unit of the menu item            |
+| subtotal       | DECIMAL(10, 2) | Subtotal for the item in the order           |
+
+**Menu_Items Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| menu_item_id   | Primary Key  | Unique menu item identifier                   |
+| name           | VARCHAR(100) | Name of the menu item                         |
+| description    | TEXT         | Description of the menu item                  |
+| category       | VARCHAR(50)  | Category or type of menu item                 |
+| price          | DECIMAL(10, 2) | Price of the menu item                      |
+
+**Payment Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| payment_id     | Primary Key  | Unique payment identifier                     |
+| order_id       | Foreign Key  | Reference to the order for which payment was made |
+| payment_date   | DATE         | Date when the payment was made                |
+| amount         | DECIMAL(10, 2) | Payment amount                              |
+| payment_method | VARCHAR(50)  | Payment method used (e.g., credit card, cash) |
+
+**Order_Status Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| status_id      | Primary Key  | Unique status identifier                      |
+| status_name    | VARCHAR(20)  | Name of the order status (e.g., pending, delivered) |
+
+
+
+Detailed explanation of requirements 
+
 1. **Menu Display:**
    - **Explanation:** Present the restaurant's menu in a user-friendly format, including item descriptions, prices, and images. Categorize menu items for easy navigation.
 
