@@ -84,6 +84,8 @@ DB Schema
 | points_used    | INT          | Points used by the customer           |
 | points_balance | INT          | Current points balance for the customer|
 
+Detailed Requirement explanation
+
 1. **Customer Registration:**
    - **Explanation:** Provide a user-friendly registration process for customers to create accounts within the app. Collect essential information, such as name, email, phone number, and allow optional social media login for convenience.
 
