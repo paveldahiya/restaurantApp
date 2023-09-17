@@ -26,6 +26,71 @@ subgraph Inventory_Management
     end
 
 ```
+DB Schema:
+
+**Inventory_Items Table:**
+
+| Field               | Type         | Description                                |
+|---------------------|--------------|--------------------------------------------|
+| item_id             | Primary Key  | Unique inventory item identifier            |
+| name                | VARCHAR(100) | Name of the inventory item                 |
+| description         | TEXT         | Description of the inventory item          |
+| category            | VARCHAR(50)  | Category or type of inventory item         |
+| unit_of_measurement | VARCHAR(20)  | Unit of measurement (e.g., kg, units)      |
+| cost_price          | DECIMAL(10, 2) | Cost price per unit                        |
+| selling_price       | DECIMAL(10, 2) | Selling price per unit                     |
+| current_quantity    | INT          | Current quantity in stock                   |
+| reorder_threshold   | INT          | Minimum quantity triggering reorder        |
+| supplier_id         | Foreign Key  | Reference to the supplier of the item      |
+| shelf_life_days     | INT          | Shelf life of the item in days             |
+| expiry_date         | DATE         | Expiry date of the item                    |
+
+**Suppliers Table:**
+
+| Field           | Type         | Description                             |
+|-----------------|--------------|-----------------------------------------|
+| supplier_id     | Primary Key  | Unique supplier identifier              |
+| name            | VARCHAR(100) | Name of the supplier                    |
+| contact_name    | VARCHAR(100) | Contact name at the supplier           |
+| email           | VARCHAR(100) | Email address of the supplier          |
+| phone_number    | VARCHAR(20)  | Phone number of the supplier           |
+| address_id      | Foreign Key  | Reference to the supplier's address    |
+
+**Inventory_Transactions Table:**
+
+| Field               | Type         | Description                                   |
+|---------------------|--------------|-----------------------------------------------|
+| transaction_id      | Primary Key  | Unique inventory transaction identifier      |
+| item_id             | Foreign Key  | Reference to the inventory item involved     |
+| transaction_date    | DATE         | Date of the inventory transaction             |
+| transaction_type    | VARCHAR(20)  | Type of transaction (e.g., purchase, usage)   |
+| quantity_change     | INT          | Change in quantity (positive for additions, negative for deductions) |
+| unit_price          | DECIMAL(10, 2) | Price per unit                               |
+| total_cost          | DECIMAL(10, 2) | Total cost of the transaction               |
+| supplier_id         | Foreign Key  | Reference to the supplier for purchases      |
+| employee_id         | Foreign Key  | Reference to the employee responsible for the transaction |
+
+**Inventory_Categories Table:**
+
+| Field          | Type         | Description                                   |
+|----------------|--------------|-----------------------------------------------|
+| category_id    | Primary Key  | Unique category identifier                    |
+| category_name  | VARCHAR(50)  | Name of the inventory category                |
+| description    | TEXT         | Description of the inventory category         |
+
+**Inventory_Alerts Table:**
+
+| Field             | Type         | Description                                |
+|-------------------|--------------|--------------------------------------------|
+| alert_id          | Primary Key  | Unique alert identifier                     |
+| item_id           | Foreign Key  | Reference to the inventory item            |
+| alert_type        | VARCHAR(20)  | Type of alert (e.g., low stock, expired)   |
+| alert_description | TEXT         | Description of the alert                   |
+| alert_date        | DATE         | Date when the alert was triggered          |
+
+
+Detailed explanation of requirements
+
 1. **Inventory Tracking:**
    - **Explanation:** Implement a system to track the levels of inventory items in real-time, ensuring accurate and up-to-date information about ingredient and supply availability.
 
