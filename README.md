@@ -6,6 +6,7 @@ Restaurant management app
 3. Orders module
 4. Inventory module
 
+Work in progress Dont look below this line :) 
 
 ```mermaid
 graph TD
